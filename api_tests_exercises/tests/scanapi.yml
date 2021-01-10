@@ -2,7 +2,7 @@ endpoints:
   - name: lojinha
     path: http://165.227.93.41/lojinha-bugada
     requests:
-      - name: get_token
+      - name: succesfully_logged_in
         path: login
         method: post
         body:
@@ -11,31 +11,80 @@ endpoints:
         vars:
           token: ${{ response.json()['data']['token'] }}
         tests:
-          - name: validate_status_code
+          - name: validate_status_code_is_200
             assert: ${{ response.status_code == 200 }}
           - name: validate_content_type_is_json
             assert: ${{ response.headers.get('Content-Type') == "application/json" }}
-      - name: insert_new_product
-          headers:
-            token: ${token}
-          path: produto
-          method: post
-          body:
-            produtonome: Xbox
-            produtovalor: 350.00
-            produtocores: [ white ]
-          tests:
-            - name: validate_status_code
-              assert: ${{ response.status_code == 201 }}
-            - name: validate_content_type_is_json
-              assert: ${{ response.headers.get('Content-Type') == "application/json" }}
-            - name: validate_produtoid_is_in_response
-              assert: ${{ response.json()['data']['produtoid'] }}
-            - name: validate_produtonome_value
-              assert: ${{ response.json()['data']['produtonome'] == 'Xbox' }}
-            - name: validate_produto_valor_value
-              assert: ${{ response.json()['data']['produtovalor'] == 350.00 }}
-            - name: validate_message_key_return
-              assert: ${{ response.json()['message'] == 'Produto adicionado com sucesso' }}
-            - name: validate_error_key_is_empty
-              assert: ${{ response.json()['error'] == '' }}
+          - name: validate_token_return
+            assert: ${{ response.json()['data']['token'] }}
+          - name: validate_message_return_is_right
+            assert: ${{ response.json()['message'] == "Sucesso ao realizar o login" }}
+          - name: validate_error_value_return_is_empty
+            assert: ${{ response.json()['error'] == "" }}
+      - name: trying_to_logging_in_with_invalid_user
+        path: login
+        method: post
+        body:
+          usuariologin: joaozinho
+          usuariosenha: a!09$%-
+        tests:
+          - name: validate_status_code_is_401
+            assert: ${{ response.status_code == 401 }}
+      - name: deleting_all_user_data
+        headers:
+          token: ${token}
+        path: dados
+        method: delete
+        tests:
+          - name: validate_status_code_is_204
+            assert: ${{ response.status_code == 204 }}
+      - name: inserting_new_product
+        headers:
+          token: ${token}
+        path: produto
+        method: post
+        body:
+          produtonome: Xbox
+          produtovalor: 350.00
+          produtocores: [white]
+        vars:
+          produtonome: Xbox
+          produtovalor: 350.00
+          produtocores: [white]
+        tests:
+          - name: validate_status_code
+            assert: ${{ response.status_code == 201 }}
+          - name: validate_content_type_is_json
+            assert: ${{ response.headers.get('Content-Type') == "application/json" }}
+          - name: validate_produtoid_is_in_response
+            assert: ${{ response.json()['data']['produtoid'] }}
+          - name: validate_produtonome_value
+            assert: ${{ response.json()['data']['produtonome'] == 'Xbox' }}
+          - name: validate_produto_valor_value
+            assert: ${{ response.json()['data']['produtovalor'] == 350.00 }}
+          - name: validate_message_value_return
+            assert: ${{ response.json()['message'] == 'Produto adicionado com sucesso' }}
+          - name: validate_error_value_is_empty
+            assert: ${{ response.json()['error'] == '' }}
+      - name: getting_all_products_data
+        headers:
+          token: ${token}
+        path: produto
+        method: get
+        tests:
+          - name: validate_status_code_is_200
+            assert: ${{ response.status_code == 200 }}
+          - name: validate_content_type_is_json
+            assert: ${{ response.headers.get('Content-Type') == "application/json" }}
+          - name: validate_produtoid_is_returned
+            assert: ${{ response.json()['data'][0]['produtoid'] }}
+          - name: validate_produtonome_value
+            assert: ${{ response.json()['data'][0]['produtonome'] == '${produtonome}' }}
+          - name: validate_produtovalor_value
+            assert: ${{ response.json()['data'][0]['produtovalor'] == ${produtovalor} }}
+          - name: validate_produtocores_value
+            assert: ${{ response.json()['data'][0]['produtocores'] == ${produtocores} }}
+          - name: validate_message_value_return
+            assert: ${{ response.json()['message'] == 'Listagem de produtos realizada com sucesso' }}
+          - name: validate_error_value_is_empty
+            assert: ${{ response.json()['error'] == '' }}
