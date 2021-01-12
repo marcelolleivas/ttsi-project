@@ -6,6 +6,7 @@ authors = ["Marcelo Leivas <marcelo.lleivas@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
+tox = "^3.20.1"
 scanapi = "^2.1.0"
 
 [tool.poetry.dev-dependencies]
