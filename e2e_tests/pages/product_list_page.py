@@ -4,7 +4,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from .po.page_objects import Page
 
 
-class LoginPage(Page):
+class ProductListPage(Page):
 
     def header_title(self):
         return self.wait.until(

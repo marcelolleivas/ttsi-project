@@ -8,22 +8,20 @@ class LoginPage(Page):
 
     def header_title(self):
         return self.wait.until(
-            EC.presence_of_element_located((By.ID, 'logo-container'))
+            EC.presence_of_element_located((By.ID, "logo-container"))
         )
 
     def user_input(self):
         return self.wait.until(
-            EC.presence_of_element_located((By.ID, 'usuario'))
+            EC.presence_of_element_located((By.ID, "usuario"))
         )
 
     def password_input(self):
         return self.wait.until(
-            EC.presence_of_element_located((By.ID, 'senha'))
+            EC.presence_of_element_located((By.ID, "senha"))
         )
 
     def entrar_bttn(self):
         return self.wait.until(
-            EC.presence_of_element_located((By.LINK_TEXT, 'ENTRAR'))
+            EC.presence_of_element_located((By.XPATH, "//button[@name='action']"))
         )
-
-
