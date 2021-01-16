@@ -10,5 +10,5 @@ Contexto: Tela de login
   Cenário: Fazer acesso com usuário válido
     Quando insiro usuário válido
     E insiro a senha
-    E clico no botão entrar
+    E clico em entrar
     Então devo estar na página de lista de produtos

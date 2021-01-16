@@ -22,7 +22,7 @@ def input_password(context):
     login_page.password_input().send_keys('marcelo123')
 
 
-@when("clico no botão entrar")
+@when("clico em entrar")
 def clicking_enter_bttn(context):
     login_page = LoginPage(context.browser)
     login_page.entrar_bttn().click()
