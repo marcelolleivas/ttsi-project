@@ -1,0 +1,29 @@
+<testsuite errors="0" failures="1" hostname="ip-192-168-100-21.us-west-2.compute.internal" name="login.Login" skipped="0" tests="2" time="1.397226" timestamp="2021-02-25T15:40:58.832133"><testcase classname="login.Login" name=": Login -- @1.1 " status="passed" time="0.625549"><system-out>
+<![CDATA[
+@scenario.begin
+  Esquema do Cenário: : Login -- @1.1 
+    Dado que tente fazer login com usuário "valido" ... passed in 0.001s
+    Então status da requisição deve ser "aprovado" ... passed in 0.625s
+    E resposta deve ser de "sucesso" ... passed in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="login.Login" name=": Login -- @1.2 " status="failed" time="0.771677"><failure message="Expected status code was 401&#10;Received status code is 404" type="AssertionError">
+<![CDATA[
+Failing step: Então status da requisição deve ser "reprovado" ... failed in 0.771s
+Location: api_tests_exercises/features/login.feature:8
+Assertion Failed: Expected status code was 401
+Received status code is 404]]>
+</failure><system-out>
+<![CDATA[
+@scenario.begin
+  Esquema do Cenário: : Login -- @1.2 
+    Dado que tente fazer login com usuário "invalido" ... passed in 0.000s
+    Então status da requisição deve ser "reprovado" ... failed in 0.771s
+    E resposta deve ser de "erro" ... skipped in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase></testsuite>
