@@ -84,5 +84,3 @@ def clean_store_data():
         headers=VALID_TOKEN
     )
     return response
-
-print(products_payload_builder("simples"))

@@ -8,8 +8,8 @@ authors = ["Marcelo Leivas <marcelo.lleivas@gmail.com>"]
 python = "^3.8"
 behave = "^1.2.6"
 ipdb = "^0.13.4"
-tox = "^3.20.1"
-scanapi = "^2.1.0"
+requests = "^2.24.0"
+selenium = "^3.141.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"

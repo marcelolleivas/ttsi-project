@@ -1,25 +1,18 @@
-from behave import given, then, when
+from behave import then, when
 
 from e2e_tests.modules.login_page import LoginPage
 from e2e_tests.modules.product_list_page import ProductListPage
 
 
-@given("que esteja na página de login da lojinha")
-def login_page(context):
-    login_page = LoginPage(context.browser)
-    login_page.open('http://165.227.93.41/lojinha-web/')
-
-
 @when("insiro usuário válido")
 def input_valid_user(context):
-    login_page = LoginPage(context.browser)
-    login_page.user_input().send_keys('marceloleivass')
+    context.page = LoginPage(context.browser)
+    context.page.user_input().send_keys('marceloleivass')
 
 
 @when("insiro a senha")
 def input_password(context):
-    login_page = LoginPage(context.browser)
-    login_page.password_input().send_keys('marcelo123')
+    context.page.password_input().send_keys('marcelo123')
 
 
 @when("clico em entrar")

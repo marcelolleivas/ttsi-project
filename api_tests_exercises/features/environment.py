@@ -1,7 +1,5 @@
 from api_tests_exercises.modules.auxiliar import clean_store_data
 
-from api_tests_exercises.helpers.constants import VALID_PRODUCT_PAYLOAD
-
 
 def before_all(context):
     userdata = context.config.userdata

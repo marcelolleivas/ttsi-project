@@ -59,4 +59,5 @@ def assert_product_is_listed(context, contains_or_not):
         print(context.product_value)
         context.page = ProductListPage(context.browser)
         assert context.page.name_product(context.product_name)
-        assert context.product_value in context.page.price_product().text, f"element text is {context.page.price_product().text}"
+        assert context.product_value in context.page.price_product().text, f"element text is " \
+                                                                           f"{context.page.price_product().text}"
