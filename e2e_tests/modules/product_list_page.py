@@ -18,5 +18,15 @@ class ProductListPage(Page):
 
     def add_product_bttn(self):
         return self.wait.until(
-            EC.presence_of_element_located((By.LINK_TEXT, 'ADICIONAR PRODUTOS'))
+            EC.presence_of_element_located((By.XPATH, "//a[contains(text(),'Adicionar produto')]"))
+        )
+
+    def name_product(self, name):
+        return self.wait.until(
+            EC.presence_of_element_located((By.XPATH, f"//a[contains(text(),'{name}')]"))
+        )
+
+    def price_product(self):
+        return self.wait.until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, 'p'))
         )

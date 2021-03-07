@@ -5,12 +5,23 @@ Funcionalidade: Criar produto
 
 
 Contexto: Tela de Adicionar Produto
-    Dado que esteja na página de "adicionar produto"
+    Dado que esteja na página de adicionar produto
 
-  Cenário: Imputar dados válidos e concluir inserção
-    Quando insiro valor em "nome do produto"
-    E insiro valor em "valor do produto"
-    E insiro valor em "cores do produto
-    E clico no botão "salvar"
-    Então sistema deve retornar mensagem "Produto adicionado com sucesso"
-    E lista de produtos deve constar novo produto
+
+    Esquema do Cenário: Adicionar produto
+
+      Quando insere nome "<nome>"
+      E insere valor "<valor>"
+      E insere cor "<cor>"
+      E clica em "<nome do botao>"
+      Então deve haver mensagem "<corpo da mensagem>" na interface
+      E lista de produtos "<tipo de validacao>" produto
+
+      Exemplos:
+      | nome           | valor    | cor          | nome do botao  | corpo da mensagem | tipo de validacao |
+      | playstation 5  | 3.000,00 | preto        | salvar         | sucesso           | contem            |
+      | playstation 5  | 3.000,00 | preto, cinza | salvar         | sucesso           | contem            |
+#      | vazio          | 3.000,00 | preto        | salvar         | erro              | nao contem        |
+#      | playstation 5  | vazio    | preto        | salvar         | erro              | nao contem        |
+#      | playstation 5  | 3.000,00 | vazio        | salvar         | erro              | nao contem        |
+

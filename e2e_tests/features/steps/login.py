@@ -1,7 +1,7 @@
 from behave import given, then, when
 
-from e2e_tests.pages.login_page import LoginPage
-from e2e_tests.pages.product_list_page import ProductListPage
+from e2e_tests.modules.login_page import LoginPage
+from e2e_tests.modules.product_list_page import ProductListPage
 
 
 @given("que esteja na página de login da lojinha")
