@@ -1,0 +1,13 @@
+language: python
+python:
+  - "3.9"
+install:
+  - make setup-dev
+
+jobs:
+  include:
+    - stage: Test
+      script:
+        - make test
+      on:
+        branch: main
