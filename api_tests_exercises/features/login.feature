@@ -10,5 +10,5 @@
 
     Exemplos:
     | status do usuário | status da requisição | status da resposta |
-    | valido            | aprovado             | sucesso            |
-    | invalido          | reprovado            | erro               |
+    | valido            | 200                  | sucesso            |
+    | invalido          | 401                  | erro               |

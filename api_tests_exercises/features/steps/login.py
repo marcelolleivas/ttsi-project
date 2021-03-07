@@ -16,9 +16,8 @@ def setup_login_payload(context, user_status):
     context.user_status = user_status
 
 
-@then('status da requisição deve ser "{login_status}"')
-def assert_login_service(context, login_status):
-    STATUS_CODES = {"aprovado": 200, "reprovado": 401}
+@then('status da requisição deve ser "{status_code}"')
+def assert_login_service(context, status_code):
     url = f"{context.lojinha_service_url}/login"
     response = post(
         url,
@@ -26,7 +25,7 @@ def assert_login_service(context, login_status):
         data=dumps(context.login_payload)
     )
 
-    expected_value = STATUS_CODES.get(login_status.lower())
+    expected_value = status_code
 
     assertion_message = (
         f"Expected status code was {expected_value}\n"
