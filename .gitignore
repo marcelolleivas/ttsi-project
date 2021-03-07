@@ -3,3 +3,4 @@ scanapi-report.html
 e2e_tests/__pycache__/
 e2e_tests/modules/__pycache__/
 e2e_tests/modules/po/__pycache__/
+__pycache__/
