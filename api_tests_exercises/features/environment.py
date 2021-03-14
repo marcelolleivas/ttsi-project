@@ -3,7 +3,7 @@ from api_tests_exercises.modules.auxiliar import clean_store_data
 
 def before_all(context):
     userdata = context.config.userdata
-    context.lojinha_service_url = userdata.get("lojinha_url", "")
+    context.lojinha_service_url = userdata.get("lojinha_api", "")
 
 
 def after_scenario(context, scenario):

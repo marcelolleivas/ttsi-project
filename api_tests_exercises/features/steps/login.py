@@ -25,7 +25,7 @@ def assert_login_service(context, status_code):
         data=dumps(context.login_payload)
     )
 
-    expected_value = status_code
+    expected_value = int(status_code)
 
     assertion_message = (
         f"Expected status code was {expected_value}\n"
