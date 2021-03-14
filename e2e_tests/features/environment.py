@@ -7,18 +7,18 @@ from e2e_tests.modules.login_page import LoginPage
 
 
 def before_all(context):
-    context.browser = webdriver.Chrome(executable_path='/Users/marceloleivas/Desktop/ml_projects/python/ttsi-project/'
-                                                       'e2e_tests/helpers/driver/chromedriver')
+    context.browser = webdriver.Chrome(executable_path='e2e_tests/driver/chromedriver')
 
 
 def before_scenario(context, scenario):
+    context.browser = webdriver.Chrome(executable_path='e2e_tests/driver/chromedriver')
     context.page = LoginPage(context.browser)
     context.page.open("http://165.227.93.41/lojinha-web")
 
 
 def after_scenario(context, scenario):
     clean_data()
-    context.browser.quit()
+    context.browser.close()
 
 
 def after_step(context, step):

@@ -4,11 +4,14 @@
 
 Funcionalidade: Login
 
-Contexto: Tela de login
-    Dado que esteja na página de login da lojinha
-
-  Cenário: Fazer acesso com usuário válido
-    Quando insiro usuário válido
-    E insiro a senha
+  Esquema do Cenário: : Login
+    Quando insiro usuário "<usuario login>"
+    E insiro a senha "<usuario senha>"
     E clico em entrar
-    Então devo estar na página de lista de produtos
+    Então devo estar na rota "<tipo de rota>"
+
+    Exemplos:
+    | usuario login   | usuario senha | tipo de rota |
+    | marceloleivass  | marcelo123    | positiva     |
+    | marceloleivass  | loremipsum    | negativa     |
+    | loremipsum      | loremipsum    | negativa     |

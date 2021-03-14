@@ -25,3 +25,9 @@ class LoginPage(Page):
         return self.wait.until(
             EC.presence_of_element_located((By.XPATH, "//button[@name='action']"))
         )
+
+    def toastr(self):
+        return self.wait.until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, ".toast"))
+        )
+
